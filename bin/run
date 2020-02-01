@@ -1,0 +1,4 @@
+require_relative '../lib/cli/environment.rb'
+
+Weather::WeatherController.new.run
+Weather::API.new
