@@ -31,8 +31,17 @@ class Weather::Weather
       @alerts = Weather::API.get_alerts
       # binding.pry
       if @alerts["alerts"].length != 0 
-        puts @alerts 
+        @alerts["alerts"].each do |alert|
+          puts "Retrieving information...please wait"
+          puts " "
+          sleep 3
+          puts alert["description"]
+          puts " "
+        end
       else 
+        puts "Retrieving information...please wait"
+        puts " "
+        sleep 3
         puts "==================="
         puts "| No alerts today |"
         puts "==================="
