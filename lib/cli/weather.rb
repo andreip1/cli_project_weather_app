@@ -3,10 +3,8 @@ class Weather::Weather
 
     def initialize(hash)
         @data = hash["data"][0]
-
     end
-
-
+    
 end
 
 # @data["data"][0]["ob_time"] time and date
