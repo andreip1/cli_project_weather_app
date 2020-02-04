@@ -1,5 +1,7 @@
 class Weather::WeatherController
 
+  attr_accessor :data, :get_temperature, :show_location
+
     def run
       welcome
       options
@@ -9,7 +11,7 @@ class Weather::WeatherController
     def welcome
       user_input
       # binding.pry
-      if @user_input_city_and_country.parsed_response == nil 
+      while @user_input_city_and_country.parsed_response == nil 
         puts "Invalid input"
         # binding.pry
         sleep 2 
@@ -18,6 +20,7 @@ class Weather::WeatherController
       end
 
       @location = Weather::Weather.new(@user_input_city_and_country)
+      # binding.pry
     end
 
     def user_input 
@@ -28,15 +31,20 @@ class Weather::WeatherController
       @country = gets.chomp.upcase
 
       # I would've tried validating @city name and country but I have no idea how to verify if those inputs are legit
-      @user_input_city_and_country = Weather::API.get_weather(@city_name, @country)
-      # binding.pry
+      @new_weather_instance = Weather::API.new
+
+      @user_input_city_and_country = @new_weather_instance.get_weather(@city_name, @country)
+    
+
     end 
 
 
 
     def options
+      # binding.pry
+
       if @user_input_city_and_country.parsed_response == nil
-        return 
+        puts "error message" 
       else  
       puts "What would you like to do? :"
       sleep 0.5
@@ -54,13 +62,13 @@ class Weather::WeatherController
       if @options_input == 'exit'
         self.exit
       elsif @options_input == 'temp'
-        @location.get_temperature
+        get_temperature
         options
       elsif @options_input == 'wind'
-        @location.get_wind
+        get_wind
         options
       elsif @options_input == 'alert'
-        @location.get_alerts
+        get_alerts
         options
       else 
         puts 'Invalid input'
@@ -79,7 +87,47 @@ class Weather::WeatherController
       end
     end
 
-  
 
-    
+  def show_location 
+
+    @location.data
+  end 
+        
+  def get_temperature 
+      puts "======================================================================================="
+      puts "|| The temperature for #{@location.data["city_name"]} is #{@location.data["temp"]} degrees Celsius.    ||"
+      puts "======================================================================================="
+  end
+
+  def get_wind 
+    puts "==============================================================="
+    puts "|| The wind speed is #{@location.data["wind_spd"]} meters per second. ||"
+    puts "==============================================================="
+  end
+
+  def get_alerts
+    @alerts = @new_weather_instance.get_alerts
+    # binding.pry
+    if @alerts["alerts"].length != 0 
+      @alerts["alerts"].each do |alert|
+        puts "Retrieving information...please wait"
+        puts " "
+        sleep 3
+        puts alert["description"]
+        puts " "
+      end
+    else 
+      puts "Retrieving information...please wait"
+      puts " "
+      sleep 3
+      puts "==================="
+      puts "| No alerts today |"
+      puts "==================="
+      puts " "
+    end
+  end
+
+
+
 end
+
