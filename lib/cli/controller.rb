@@ -32,11 +32,13 @@ class Weather::WeatherController
 
       puts "Please enter the country name for more accuracy (optional): "
 
-      country = gets.chomp.upcase
+      country_name = gets.chomp.upcase
 
-
+      hash = {'city' => city_name, 'country' => country_name, 'units' => units_input }
+      # binding.pry
+      # refactor the get_weather method to take in a single argument
       @new_weather_instance = Weather::API.new
-      @user_input_city_and_country = @new_weather_instance.get_weather(city_name, country, units_input)
+      @user_input_city_and_country = @new_weather_instance.get_weather(hash)
     end 
 
 
@@ -92,7 +94,7 @@ class Weather::WeatherController
   def get_wind 
     # units_checking
     puts "==============================================================="
-    puts "|| The wind speed is #{@location.wind} #{@ws}. ||"
+    puts "|| The wind speed is #{@location.wind_spd} #{@ws}. ||"
     puts "==============================================================="
   end
 
@@ -118,6 +120,7 @@ class Weather::WeatherController
     end
   end
 
+
   def units_checking(input)
     if input == 'I'
       @fc = 'Fahrenheit'
@@ -129,3 +132,13 @@ class Weather::WeatherController
   end
 end
 
+def return_values
+  if 3 == true
+   return "potatoes"
+  else
+  puts "peas"
+  "peas"
+  end
+end
+
+return_values
