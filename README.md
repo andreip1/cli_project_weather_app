@@ -1,34 +1,31 @@
 # Cli::Project
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cli/project`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to my weather-app gem
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'cli-project'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install cli-project
+## Gems required
+HTTParty
+Pry (optional, for debugging)
 
 ## Usage
 
-TODO: Write usage instructions here
+In order to run the app, execute the 'run' file from the bin folder.
+Instructions to use this app will be provided as you enter input in the terminal.
 
-## Development
+First input will be about the measurment system. Use 'C' for Celsius or 'I' for the Imperial system.
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Second input will be your city name
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Third input will be the country name and this is optional.
+NOTE: Although optional, it's recommended that you type in the name of the country 'United Kingdom' or 'UK' as if there are more than 1 cities in the world with the same name, the program might not return the one you want. For some reason, US is prioritised when it comes to that.
+
+Example: If you type in London without a country, it will return the London from the US.
+
+
+Commands available : 
+    temp - checks the temperature
+    wind - checks the wind speed
+    alert - checks for severe weather alerts
+
 
 ## Contributing
 
@@ -38,4 +35,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## Code of Conduct
 
 Everyone interacting in the Cli::Project project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/cli-project/blob/master/CODE_OF_CONDUCT.md).
-# cli_project_weather_app
+
