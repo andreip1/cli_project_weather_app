@@ -3,8 +3,8 @@
 Welcome to my weather-app gem
 
 ## Gems required
-HTTParty
-Pry (optional, for debugging)
+- HTTParty
+- Pry (optional, for debugging)
 
 ## Usage
 
@@ -22,9 +22,9 @@ Example: If you type in London without a country, it will return the London from
 
 
 Commands available : 
-    temp - checks the temperature
-    wind - checks the wind speed
-    alert - checks for severe weather alerts
+    1. temp - checks the temperature
+    2. wind - checks the wind speed
+    3. alert - checks for severe weather alerts
 
 
 ## Contributing
