@@ -1,4 +1,4 @@
-# Cli::Project
+# Weather App
 
 Welcome to my weather-app gem
 
